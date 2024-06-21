@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  postgresql: 
+    image: 'bitnami/postgresql:latest'
+    container_name: fast-feet
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db:/var/lib/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=${POSTGRES_USERNAME}
+      - POSTGRESQL_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRES_DATABASE}
+    networks:
+      - fast-feet
+
+volumes:
+  db:
+
+networks:
+  fast-feet:
+    driver: bridge
