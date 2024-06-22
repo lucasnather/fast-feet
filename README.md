@@ -6,7 +6,7 @@
 
 # Regras da aplicação
 
-- [] Deve se cadastrar um usuário como Entregador ou Admin
+- [X] Deve se cadastrar um usuário como Entregador ou Admin
 - [] Deve se autenticar um usuário
 - [] Deve se atualizar os dados de um entregador
 - [] Deve se deletar um usuário
@@ -29,7 +29,7 @@
 
 # Requesitos não funcionais
 
-- [] Persistência de dados no Banco de Dados Postgres
+- [X] Persistência de dados no Banco de Dados Postgres
 - [] Cache usando Redis
 - [] Usar token jwt para autenticação
-- [] Criptografar a senha dos usuários
+- [X] Criptografar a senha dos usuários
