@@ -11,6 +11,7 @@ export class UserRepository implements UserInterface {
     ) {}
 
     async create({ city, cpf,name, password, role }: Prisma.UsersCreateInput) {
+
         const users = await this.prisma.users.create({
             data: {
                 city,
@@ -31,7 +32,7 @@ export class UserRepository implements UserInterface {
             }
         })
 
-        if(users) return null
+        if(!users) return null
 
         return users
     }
