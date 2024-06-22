@@ -24,7 +24,7 @@ export class RegisterUserController {
         const { city, cpf, name, password, role } = body
 
         try {
-            const user = await this.createUserService.execute({
+            const { users } = await this.createUserService.execute({
                 city,
                 cpf,
                 name,
@@ -33,10 +33,10 @@ export class RegisterUserController {
             })
 
             return {
-                user
+                users
             }
         } catch(e) {
-            return 'Internal server Error'
+           return 'Internal Server Error'
         }
 
     }
