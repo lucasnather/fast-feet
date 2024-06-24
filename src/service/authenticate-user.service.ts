@@ -1,3 +1,4 @@
+import { Injectable } from "@nestjs/common"
 import { Users } from "@prisma/client"
 import { InvalidCredentialsError } from "src/erros/invalid-credentials.error"
 import { HashCompare } from "src/interface/cryptography/hash-compare.interface"
@@ -12,6 +13,7 @@ interface AuthenticateUserResponse {
     users: Users
 }
 
+@Injectable()
 export class AuthenticateUserService {
 
     constructor(

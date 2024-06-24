@@ -1,7 +1,9 @@
+import { Injectable } from "@nestjs/common";
 import { compare, hash } from "bcryptjs";
 import { HashCompare } from "src/interface/cryptography/hash-compare.interface";
 import { HashEncoder } from "src/interface/cryptography/hash-encoder.interface";
 
+@Injectable()
 export class HashRepository implements HashEncoder, HashCompare {
     private ROUNDS: number = 8
 

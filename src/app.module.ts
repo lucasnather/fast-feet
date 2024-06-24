@@ -8,13 +8,25 @@ import { HashEncoder } from './interface/cryptography/hash-encoder.interface';
 import { HashRepository } from './repository/cryptography/hash.repository';
 import { ConfigModule } from '@nestjs/config';
 import { envSchema } from './env/env';
+import { AuthenticateUserService } from './service/authenticate-user.service';
+import { HashCompare } from './interface/cryptography/hash-compare.interface';
+import { AuthModule } from './auth/auth.module';
+import { AuthenticateUserController } from './controller/users/authenticate-user.controller';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
-  imports: [DatabaseModule, ConfigModule.forRoot({
-    isGlobal: true,
-    validate: (env) => envSchema.parse(env)
-  })],
-  controllers: [RegisterUserController],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validate: (env) => envSchema.parse(env)
+    }),
+    DatabaseModule,
+    AuthModule, 
+  ],
+  controllers: [
+    RegisterUserController, 
+    AuthenticateUserController
+  ],
   providers: [
     {
       provide: UserInterface,
@@ -24,7 +36,13 @@ import { envSchema } from './env/env';
       provide: HashEncoder,
       useClass: HashRepository
     },
-    CreateUserService
+    {
+      provide: HashCompare,
+      useClass: HashRepository
+    },
+    CreateUserService,
+    AuthenticateUserService, 
+
   ],
 })
 export class AppModule {}

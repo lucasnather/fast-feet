@@ -10,7 +10,7 @@ interface CreateUserRequest {
     cpf: string
     password: string
     city: string
-    role?: Role | null
+    role: Role | null
 }
 
 interface CreateUserResponse {
@@ -42,7 +42,7 @@ export class CreateUserService {
             cpf,
             name,
             password: hash,
-            role
+            role: role ? role : 'admin'
         })
 
         return {
