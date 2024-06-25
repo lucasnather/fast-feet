@@ -6,6 +6,7 @@ import { EnvSchema } from "src/env/env";
 import { JwtStrategy } from "./jwt-strategy.strategy";
 import { JwtAuthGuard } from "./jwt-auth.guard";
 
+
 @Module({
     imports: [
         PassportModule,
@@ -21,7 +22,10 @@ import { JwtAuthGuard } from "./jwt-auth.guard";
             }
         })
     ],
-    providers: [JwtStrategy, JwtAuthGuard],
+    providers: [
+        JwtStrategy, 
+        JwtAuthGuard
+    ],
     exports: [JwtModule, PassportModule]
 })
 export class AuthModule {}

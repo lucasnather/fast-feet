@@ -17,7 +17,7 @@ const registerUserBodySchema = z.object({
 
 type RegisterUserBody = z.infer<typeof registerUserBodySchema>
 
-@Controller('/api/register')
+@Controller('/api/users/register')
 export class RegisterUserController {
 
     constructor(

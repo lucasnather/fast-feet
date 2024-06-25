@@ -12,7 +12,8 @@ import { AuthenticateUserService } from './service/authenticate-user.service';
 import { HashCompare } from './interface/cryptography/hash-compare.interface';
 import { AuthModule } from './auth/auth.module';
 import { AuthenticateUserController } from './controller/users/authenticate-user.controller';
-import { JwtService } from '@nestjs/jwt';
+import { UpdateUserService } from './service/update-user.service';
+import { UpdateUserController } from './controller/users/update-user.controller';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { JwtService } from '@nestjs/jwt';
   ],
   controllers: [
     RegisterUserController, 
-    AuthenticateUserController
+    AuthenticateUserController,
+    UpdateUserController
   ],
   providers: [
     {
@@ -42,7 +44,7 @@ import { JwtService } from '@nestjs/jwt';
     },
     CreateUserService,
     AuthenticateUserService, 
-
+    UpdateUserService
   ],
 })
 export class AppModule {}

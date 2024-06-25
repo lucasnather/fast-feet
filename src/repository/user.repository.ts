@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Prisma  } from "@prisma/client";
+import { $Enums, Prisma  } from "@prisma/client";
 import { PrismaService } from "src/database/prisma/prisma.service";
 import { UserInterface } from "src/interface/user.interface";
 
@@ -9,6 +9,7 @@ export class UserRepository implements UserInterface {
     constructor(
         private prisma: PrismaService
     ) {}
+    
 
     async create({ city, cpf,name, password, role }: Prisma.UsersCreateInput) {
 
@@ -19,6 +20,23 @@ export class UserRepository implements UserInterface {
                 name,
                 password,
                 role: role ? role : 'deliveryMan'
+            }
+        })
+
+        return users
+    }
+
+    async save({ city, cpf,name,password,role }: Prisma.UsersUpdateInput, id: string) {
+        const users = await this.prisma.users.update({
+            where: {
+                id
+            },
+            data: {
+                city,
+                cpf,
+                name,
+                password,
+                role
             }
         })
 
@@ -36,5 +54,19 @@ export class UserRepository implements UserInterface {
 
         return users
     }
+
+    async findById(id: string) {
+        const users = await this.prisma.users.findUnique({
+            where: {
+                id
+            }
+        })
+
+        if(!users) return null
+
+        return users
+    }
+
+   
 
 }
