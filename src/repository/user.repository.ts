@@ -36,7 +36,8 @@ export class UserRepository implements UserInterface {
                 cpf,
                 name,
                 password,
-                role
+                role,
+                updatedAt: new Date()
             }
         })
 

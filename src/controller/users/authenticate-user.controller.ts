@@ -31,9 +31,11 @@ export class AuthenticateUserController {
                 password
             })
 
+            const roles = [users.role]
+
             const token = this.jwt.sign({
                 sub: users.id,
-                role: users.role
+                roles
             })
 
             return {

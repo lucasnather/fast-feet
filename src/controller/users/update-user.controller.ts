@@ -1,30 +1,25 @@
-import { Body, Controller, Param, Post, UseGuards, UsePipes } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
-import { ZodValidationPipe } from "src/pipe/zod-validation.pipe";
+import {  Controller, Param, Put, UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
+import { Roles } from "src/auth/role.decorator";
+import { CpfInvalidError } from "src/erros/cpf-invalid.error";
+import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
 import { UpdateUserService } from "src/service/update-user.service";
-import z from "zod";
+import { UserProps, UserUpdate } from "../decorator/user.decorator";
 
-const updateBodySchema = z.object({
-    cpf: z.string().nullable(),
-    password: z.string().nullable(),
-    name: z.string().nullable(),
-    city: z.string().nullable(),
-    role: z.enum(['admin', 'deliveryMan']).nullable().default('deliveryMan'),
-})
 
-type UpdateBodyType = z.infer<typeof updateBodySchema>
-
-@Controller("/api/users/update/:userId")
+@Controller('/api/users/:id')
 export class UpdateUserController {
 
     constructor(
         private updateUserService: UpdateUserService
     ) {}
 
-    @Post()
-    @UsePipes(new ZodValidationPipe(updateBodySchema))
-    async post(@Param('userId') userId: string, @Body() body: UpdateBodyType) {
-        const { cpf, password, role, city, name } = body
+    @Roles('admin')
+    @UseGuards(JwtAuthGuard)
+    @Put()
+    async put( @Param('id') id: string, @UserUpdate() req: UserProps) {
+        
+        const { city, cpf, name, password, role } = req
 
         try {
             const { users } = await this.updateUserService.execute({
@@ -33,13 +28,18 @@ export class UpdateUserController {
                 city,
                 name,
                 role,
-                id: userId
+                id
             })
 
             return {
                 users
             }
         } catch(e) {
+            if(e instanceof ResourceNotFoundError || e instanceof CpfInvalidError) {
+                return {
+                    message: e.message
+                }
+            }
 
             return 'Internal Server Error'
         }
