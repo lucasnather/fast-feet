@@ -8,7 +8,7 @@
 
 - [X] Deve se cadastrar um usuário como Entregador ou Admin
 - [X] Deve se autenticar um usuário
-- [] Deve se atualizar os dados de um entregador
+- [X] Deve se atualizar os dados de um entregador
 - [] Deve se deletar um usuário
 - [] Deve se cadastrar um destinatário 
 - [] Deve se atualizar dados de um destinatário
@@ -22,7 +22,7 @@
 # Regras de negócio
 
 - [] CRUD de usuário, encomendas e destinatário sendo realizadas apenas por ADMIN
-- [] Alterar senha de entregadores apenas admin
+- [X] Alterar senha de entregadores apenas admin
 - [] Marcar uma encomenda como entregue apenas mediante ao envio da foto
 - [] Somente o entregador pode marcar uma entrega como entregue
 - [] O entregador deve somente listar as suas entregas
