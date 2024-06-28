@@ -9,7 +9,6 @@ export class UserRepository implements UserInterface {
     constructor(
         private prisma: PrismaService
     ) {}
-    
 
     async create({ city, cpf,name, password, role }: Prisma.UsersCreateInput) {
 
@@ -43,6 +42,15 @@ export class UserRepository implements UserInterface {
 
         return users
     }
+
+    async deleteById(id: string) {
+        await this.prisma.users.delete({
+            where: {
+                id
+            }
+        })
+    }
+    
 
     async findByCPF(cpf: string) {
         const users = await this.prisma.users.findUnique({

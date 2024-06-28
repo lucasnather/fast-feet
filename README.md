@@ -9,12 +9,12 @@
 - [X] Deve se cadastrar um usuário como Entregador ou Admin
 - [X] Deve se autenticar um usuário
 - [X] Deve se atualizar os dados de um entregador
-- [] Deve se deletar um usuário
+- [X] Deve se deletar um usuário
 - [] Deve se cadastrar um destinatário 
 - [] Deve se atualizar dados de um destinatário
 - [] Deve se deletar um destinatário
 - [] Deve se cadastrar uma encomenda
-- [] Deve se atualizatar uma encomenda para retirada
+- [] Deve se atualizar uma encomenda para retirada
 - [] Deve se marcar uma entrega como entregue
 - [] Deve se pegar dados de uma entrega com o detinatário
 - [] Deve se filtrar encomendas por bairro, status e cidade

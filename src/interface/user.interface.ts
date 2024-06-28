@@ -5,6 +5,7 @@ import { Prisma, Users } from "@prisma/client";
 export abstract class UserInterface {
     abstract create(user: Prisma.UsersCreateInput): Promise<Users>
     abstract save(user: Prisma.UsersUpdateInput, id: string): Promise<Users>
+    abstract deleteById(id: string): Promise<void>
     abstract findByCPF(cpf: string): Promise<Users | null>
     abstract findById(id: string): Promise<Users | null>
 }

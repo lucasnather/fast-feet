@@ -14,6 +14,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthenticateUserController } from './controller/users/authenticate-user.controller';
 import { UpdateUserService } from './service/update-user.service';
 import { UpdateUserController } from './controller/users/update-user.controller';
+import { DeleteUserService } from './service/delete-user.service';
+import { DeleteUserController } from './controller/users/delete-user.controller';
 
 @Module({
   imports: [
@@ -27,7 +29,8 @@ import { UpdateUserController } from './controller/users/update-user.controller'
   controllers: [
     RegisterUserController, 
     AuthenticateUserController,
-    UpdateUserController
+    UpdateUserController,
+    DeleteUserController
   ],
   providers: [
     {
@@ -44,7 +47,8 @@ import { UpdateUserController } from './controller/users/update-user.controller'
     },
     CreateUserService,
     AuthenticateUserService, 
-    UpdateUserService
+    UpdateUserService,
+    DeleteUserService
   ],
 })
 export class AppModule {}
