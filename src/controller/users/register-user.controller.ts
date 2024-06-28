@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UsePipes } from "@nestjs/common";
+import { BadRequestException, Body, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
 import { CpfInvalidError } from "src/erros/cpf-invalid.error";
 import { UserAlreadyExistsError } from "src/erros/user-already-exists.error";
 import { ZodValidationPipe } from "src/pipe/zod-validation.pipe";
@@ -42,11 +42,11 @@ export class RegisterUserController {
                 users
             }
         } catch(e) {
-            if(e instanceof CpfInvalidError) return e.message
-
-            if(e instanceof UserAlreadyExistsError) return e.message
-
-           return 'Internal Server Error'
+            if(e instanceof CpfInvalidError || e instanceof UserAlreadyExistsError) {
+                throw new BadRequestException({
+                    message: e.message
+                })
+            }
         }
 
     }

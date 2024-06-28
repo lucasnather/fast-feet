@@ -1,4 +1,4 @@
-import {  Controller, Param, Put, UseGuards } from "@nestjs/common";
+import {  BadRequestException, Controller, Param, Put, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { Roles } from "src/auth/role.decorator";
 import { CpfInvalidError } from "src/erros/cpf-invalid.error";
@@ -36,12 +36,12 @@ export class UpdateUserController {
             }
         } catch(e) {
             if(e instanceof ResourceNotFoundError || e instanceof CpfInvalidError) {
-                return {
+                throw new BadRequestException({
                     message: e.message
-                }
+                })
             }
 
-            return 'Internal Server Error'
+           
         }
     }
 }

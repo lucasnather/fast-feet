@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UsePipes } from "@nestjs/common";
+import { BadRequestException, Body, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { InvalidCredentialsError } from "src/erros/invalid-credentials.error";
 import { ZodValidationPipe } from "src/pipe/zod-validation.pipe";
@@ -43,12 +43,10 @@ export class AuthenticateUserController {
             }
         } catch(e) {
             if(e instanceof InvalidCredentialsError) {
-                return {
+                throw new BadRequestException({
                     message: e.message
-                }
+                })
             }
-
-            return 'Internal Server Error'
         }
     }
 }

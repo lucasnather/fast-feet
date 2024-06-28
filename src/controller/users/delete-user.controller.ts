@@ -1,4 +1,4 @@
-import { Controller, Delete, Param, UseGuards } from "@nestjs/common";
+import { BadRequestException, Controller, Delete, InternalServerErrorException, Param, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { Roles } from "src/auth/role.decorator";
 import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
@@ -26,12 +26,12 @@ export class DeleteUserController {
             }
         } catch(e) {
             if(e instanceof ResourceNotFoundError) {
-                return {
+                throw new BadRequestException({
                     message: e.message
-                }
+                })
             }
 
-             return 'Internal Server Error'
+            
         }
     }
 }
