@@ -1,9 +1,9 @@
+import { CpfInvalidError } from "../erros/cpf-invalid.error.js";
+import { ResourceNotFoundError } from "../erros/resource-not-found.error.js";
+import { HashEncoder } from "../interface/cryptography/hash-encoder.interface.js";
+import { UserInterface } from "../interface/user.interface.js";
 import { Injectable } from "@nestjs/common";
 import { Role, Users } from "@prisma/client";
-import { CpfInvalidError } from "src/erros/cpf-invalid.error";
-import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
-import { HashEncoder } from "src/interface/cryptography/hash-encoder.interface";
-import { UserInterface } from "src/interface/user.interface";
 
 interface UpdateUserRequest {
     id: string

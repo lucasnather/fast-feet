@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { Role, Users } from "@prisma/client";
-import { CpfInvalidError } from "src/erros/cpf-invalid.error";
-import { UserAlreadyExistsError } from "src/erros/user-already-exists.error";
-import { HashEncoder } from "src/interface/cryptography/hash-encoder.interface";
-import { UserInterface } from "src/interface/user.interface";
+import { CpfInvalidError } from "../erros/cpf-invalid.error.js";
+import { UserAlreadyExistsError } from "../erros/user-already-exists.error.js";
+import { HashEncoder } from "../interface/cryptography/hash-encoder.interface.js";
+import { UserInterface } from "../interface/user.interface.js";
 
 interface CreateUserRequest {
     name: string

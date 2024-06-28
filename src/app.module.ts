@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from './database/database.module';
-import { RegisterUserController } from './controller/users/register-user.controller';
-import { CreateUserService } from './service/create-user.service';
-import { UserInterface } from './interface/user.interface';
-import { UserRepository } from './repository/user.repository';
-import { HashEncoder } from './interface/cryptography/hash-encoder.interface';
-import { HashRepository } from './repository/cryptography/hash.repository';
 import { ConfigModule } from '@nestjs/config';
-import { envSchema } from './env/env';
-import { AuthenticateUserService } from './service/authenticate-user.service';
-import { HashCompare } from './interface/cryptography/hash-compare.interface';
-import { AuthModule } from './auth/auth.module';
-import { AuthenticateUserController } from './controller/users/authenticate-user.controller';
-import { UpdateUserService } from './service/update-user.service';
-import { UpdateUserController } from './controller/users/update-user.controller';
-import { DeleteUserService } from './service/delete-user.service';
-import { DeleteUserController } from './controller/users/delete-user.controller';
+import { envSchema } from './env/env.js';
+import { DatabaseModule } from './database/database.module.js';
+import { AuthModule } from './auth/auth.module.js';
+import { RegisterUserController } from './controller/users/register-user.controller.js';
+import { AuthenticateUserController } from './controller/users/authenticate-user.controller.js';
+import { UpdateUserController } from './controller/users/update-user.controller.js';
+import { DeleteUserController } from './controller/users/delete-user.controller.js';
+import { UserInterface } from './interface/user.interface.js';
+import { UpdateUserService } from './service/update-user.service.js';
+import { DeleteUserService } from './service/delete-user.service.js';
+import { AuthenticateUserService } from './service/authenticate-user.service.js';
+import { CreateUserService } from './service/create-user.service.js';
+import { HashCompare } from './interface/cryptography/hash-compare.interface.js';
+import { HashRepository } from './repository/cryptography/hash.repository.js';
+import { HashEncoder } from './interface/cryptography/hash-encoder.interface.js';
+import { UserRepository } from './repository/user.repository.js';
 
 @Module({
   imports: [

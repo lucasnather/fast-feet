@@ -1,9 +1,9 @@
-import { BadRequestException, Body, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
-import { CpfInvalidError } from "src/erros/cpf-invalid.error";
-import { UserAlreadyExistsError } from "src/erros/user-already-exists.error";
-import { ZodValidationPipe } from "src/pipe/zod-validation.pipe";
-import { CreateUserService } from "src/service/create-user.service";
+import { BadRequestException, Body, Controller, Post, UsePipes } from "@nestjs/common";
+import { UserAlreadyExistsError } from "../../erros/user-already-exists.error.js";
+import { ZodValidationPipe } from "../../pipe/zod-validation.pipe.js";
+import { CreateUserService } from "../../service/create-user.service.js";
 import { z } from "zod";
+import { CpfInvalidError } from "../../erros/cpf-invalid.error.js";
 
 const registerUserBodySchema = z.object({
     name: z.string(),

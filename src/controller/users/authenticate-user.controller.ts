@@ -1,8 +1,9 @@
-import { BadRequestException, Body, Controller, InternalServerErrorException, Post, UsePipes } from "@nestjs/common";
+import { InvalidCredentialsError } from "../../erros/invalid-credentials.error.js";
+import { ZodValidationPipe } from "../../pipe/zod-validation.pipe.js";
+import { AuthenticateUserService } from "../../service/authenticate-user.service.js";
+import { BadRequestException, Body, Controller, Post, UsePipes } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { InvalidCredentialsError } from "src/erros/invalid-credentials.error";
-import { ZodValidationPipe } from "src/pipe/zod-validation.pipe";
-import { AuthenticateUserService } from "src/service/authenticate-user.service";
+
 import z from "zod";
 
 const authenticateBodySchema = z.object({

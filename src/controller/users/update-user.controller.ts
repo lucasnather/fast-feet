@@ -1,10 +1,10 @@
 import {  BadRequestException, Controller, Param, Put, UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
-import { Roles } from "src/auth/role.decorator";
-import { CpfInvalidError } from "src/erros/cpf-invalid.error";
-import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
-import { UpdateUserService } from "src/service/update-user.service";
-import { UserProps, UserUpdate } from "../decorator/user.decorator";
+import { JwtAuthGuard } from "../../auth/jwt-auth.guard.js";
+import { Roles } from "../../auth/role.decorator.js";
+import { CpfInvalidError } from "../../erros/cpf-invalid.error.js";
+import { ResourceNotFoundError } from "../../erros/resource-not-found.error.js";
+import { UpdateUserService } from "../../service/update-user.service.js";
+import { UserProps, UserUpdate } from "../decorator/user.decorator.js";
 
 
 @Controller('/api/users/:id')

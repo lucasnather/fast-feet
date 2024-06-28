@@ -1,8 +1,9 @@
-import { BadRequestException, Controller, Delete, InternalServerErrorException, Param, UseGuards } from "@nestjs/common";
-import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
-import { Roles } from "src/auth/role.decorator";
-import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
-import { DeleteUserService } from "src/service/delete-user.service";
+import { JwtAuthGuard } from "../../auth/jwt-auth.guard.js";
+import { Roles } from "../../auth/role.decorator.js";
+import { ResourceNotFoundError } from "../../erros/resource-not-found.error.js";
+import { DeleteUserService } from "../../service/delete-user.service.js";
+import { BadRequestException, Controller, Delete, Param, UseGuards } from "@nestjs/common";
+
 
 @Controller("/api/users/:id")
 export class DeleteUserController {

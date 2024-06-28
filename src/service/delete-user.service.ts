@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { Users } from "@prisma/client";
-import { ResourceNotFoundError } from "src/erros/resource-not-found.error";
-import { UserInterface } from "src/interface/user.interface";
+import { ResourceNotFoundError } from "../erros/resource-not-found.error.js";
+import { UserInterface } from "../interface/user.interface.js";
 
 interface DeleteUserRequest {
     id: string

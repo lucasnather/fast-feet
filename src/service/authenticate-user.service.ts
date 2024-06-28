@@ -1,8 +1,8 @@
+import { InvalidCredentialsError } from "../erros/invalid-credentials.error.js"
+import { HashCompare } from "../interface/cryptography/hash-compare.interface.js"
+import { UserInterface } from "../interface/user.interface.js"
 import { Injectable } from "@nestjs/common"
 import { Users } from "@prisma/client"
-import { InvalidCredentialsError } from "src/erros/invalid-credentials.error"
-import { HashCompare } from "src/interface/cryptography/hash-compare.interface"
-import { UserInterface } from "src/interface/user.interface"
 
 interface AuthenticateUserRequest {
     cpf: string

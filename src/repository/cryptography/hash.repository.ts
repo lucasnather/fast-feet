@@ -1,18 +1,18 @@
 import { Injectable } from "@nestjs/common";
-import { compare, hash } from "bcryptjs";
-import { HashCompare } from "src/interface/cryptography/hash-compare.interface";
-import { HashEncoder } from "src/interface/cryptography/hash-encoder.interface";
+import pkg from "bcryptjs";
+import { HashCompare } from "../../interface/cryptography/hash-compare.interface.js";
+import { HashEncoder } from "../../interface/cryptography/hash-encoder.interface.js";
 
 @Injectable()
 export class HashRepository implements HashEncoder, HashCompare {
     private ROUNDS: number = 8
 
     async hashPassword(plain: string): Promise<string> {
-        return await hash(plain, this.ROUNDS)
+        return await pkg.hash(plain, this.ROUNDS)
     }
 
     async comparePassword(plain: string, dbPassoword: string): Promise<boolean> {
-        return await compare(plain, dbPassoword)
+        return await pkg.compare(plain, dbPassoword)
     }
 
 }
